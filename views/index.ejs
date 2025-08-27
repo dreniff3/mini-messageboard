@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles.css">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <!-- Note the use of the raw output tag < % -
+         with the include which is used to avoid double-escaping
+         the HTML output -->
+        <%- include('navbar', { links: links }) %>
+        <ul>
+            <% messages.forEach((message) => { %>
+                <%- include('message', { message: message }); %>
+                <a href="/message/<%= message.id %>">Open</a>
+            <% }) %>
+        </ul>
+        <%- include('footer', { name: name }) %>
+    </body>
+</html>
