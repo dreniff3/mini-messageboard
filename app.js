@@ -35,7 +35,10 @@ app.set("view engine", "ejs");
 app.use('/', messageRouter);
 
 // Catch-all for all otherwise unmatched paths
-app.get('/{*splat}', (req, res) => res.send('404 - Sorry, page does not exist'));
+// app.get('/{*splat}', (req, res) => res.send('404 - Sorry, page does not exist'));
+app.use((req, res) => {
+    res.status(404).send('404 - Sorry, page does not exist');
+});
 
 // Error middleware function
 app.use((err, req, res, next) => {
